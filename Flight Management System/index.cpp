@@ -28,44 +28,44 @@ map<string,string> status;
 
 
 //under construction
-void add(){
-    cout<<"Enter the flight name:";
-    string name;
-    cin>>name;
-    flight_name.push_back(name);
-    cout<<"Enter the flight number:";
-    string number;
-    cin>>number;
-    flight_no.push_back(number);
-    cout<<"Enter the flight departure airport:";
-    string dept;
-    cin>>dept;
-    dept_air[flight_no]=dept;
-    cout<<"Enter the flight arrival airport:";
-    string arr;
-    cin>>arr;
-    arr_air[flight_no]=arr;
-    cout<<"Enter the flight arrival time:";
-    string time1;
-    cin>>time1;
-    dept_time[flight_no]=time1;
-    cout<<"Enter the flight arrival airport:";
-    string arr;
-    cin>>arr;
-    arr_air[flight_no]=arr;
-     cout<<"Enter the flight arrival airport:";
-    string arr;
-    cin>>arr;
-    arr_air[flight_no]=arr;
-    cout<<"Enter the flight arrival airport:";
-    string arr;
-    cin>>arr;
-    arr_air[flight_no]=arr;
-    cout<<"Enter the flight arrival airport:";
-    string arr;
-    cin>>arr;
-    arr_air[flight_no]=arr;
-}
+// void add(){
+//     cout<<"Enter the flight name:";
+//     string name;
+//     cin>>name;
+//     flight_name.push_back(name);
+//     cout<<"Enter the flight number:";
+//     string number;
+//     cin>>number;
+//     flight_no.push_back(number);
+//     cout<<"Enter the flight departure airport:";
+//     string dept;
+//     cin>>dept;
+//     dept_air[flight_no]=dept;
+//     cout<<"Enter the flight arrival airport:";
+//     string arr;
+//     cin>>arr;
+//     arr_air[flight_no]=arr;
+//     cout<<"Enter the flight arrival time:";
+//     string time1;
+//     cin>>time1;
+//     dept_time[flight_no]=time1;
+//     cout<<"Enter the flight arrival airport:";
+//     string arr;
+//     cin>>arr;
+//     arr_air[flight_no]=arr;
+//      cout<<"Enter the flight arrival airport:";
+//     string arr;
+//     cin>>arr;
+//     arr_air[flight_no]=arr;
+//     cout<<"Enter the flight arrival airport:";
+//     string arr;
+//     cin>>arr;
+//     arr_air[flight_no]=arr;
+//     cout<<"Enter the flight arrival airport:";
+//     string arr;
+//     cin>>arr;
+//     arr_air[flight_no]=arr;
+// }
 
 void admin(){
     int flag=0;
@@ -231,78 +231,83 @@ void registerUser() {
         cout << "Enter the user_name:";
         string username;
         cin >> username;
-        int flag1=0;
+        int flag1 = 0;
         for (auto i : User_name) {
             if (i == username) {
                 cout << "UserName already exists" << endl;
-                flag1=1;
+                flag1 = 1;
                 continue;
             }
         }
-        if(flag1==1) continue;
+        if (flag1 == 1) continue;
         cout << "Enter the email:";
         string email;
         cin >> email;
-        flag1=0;
+        flag1 = 0;
         for (auto i : Email) {
             if (i == email) {
                 cout << "Email already exists" << endl;
-                flag1=1;
+                flag1 = 1;
                 continue;
             }
         }
-        if(flag1==1) continue;
+        if (flag1 == 1) continue;
+
         label1:
-        cout<<"Enter the Date of birth:";
+        cout << "Enter the Date of birth (dd-mm-yyyy):";
         string dob;
-        cin>>dob;
-        // stringstream ss(dob);
-        // string delim="-";
-        // string ans;
-        // int i=0;
-        // flag1=0;
-        // while(getline(ss,ans,delim)){
-        //     if(i==0){
-        //         if(ans-'0'>31&&ans-'0'<1){
-        //             flag1=1;
+        cin >> dob;
+        stringstream ss(dob);
+        string delim = "-";
+        string ans;
+        int i = 0;
+        flag1 = 0;
+        // while (getline(ss, ans, delim)) {
+        //     if (i == 0) {
+        //         int day = stoi(ans);
+        //         if (day > 31 || day < 1) {
+        //             flag1 = 1;
+        //             break;
+        //         }
+        //     } else if (i == 1) {
+        //         int month = stoi(ans);
+        //         if (month > 12 || month < 1) {
+        //             flag1 = 1;
+        //             break;
+        //         }
+        //     } else {
+        //         int year = stoi(ans);
+        //         if (year == 0) {
+        //             flag1 = 1;
         //             break;
         //         }
         //     }
-        //     else if(i==1){
-        //         if(ans-'0'>12&&ans-'0'<1){
-        //             flag1=1;
-        //             break;
-        //         }
-        //     }
-        //     else{
-        //         if(ans-'0'==0){
-        //             flag1=1;
-        //             break;
-        //         }
-        //     }
+        //     i++;
         // }
-        // if(flag1==1){
-        //     cout<<"Date of birth is invalid!"<<endl<<"It should be in the format dd-mm-yyyy"<<endl;
-        //     goto label1;
-        // }
+        if (flag1 == 1) {
+            cout << "Date of birth is invalid!" << endl;
+            cout << "It should be in the format dd-mm-yyyy" << endl;
+            goto label1;
+        }
+
         labelA:
         string password;
-        cout<<"Enter the password:";
+        cout << "Enter the password:";
         cin >> password;
         if (password == email || password == username) {
-            cout << "Password should not be email or username"<<endl;
+            cout << "Password should not be email or username" << endl;
             goto labelA;
         }
-        if (password.size() > 15 || password.size() < 8) { 
+        if (password.size() > 15 || password.size() < 8) {
             cout << "Password length should be 8 to 15 characters" << endl;
             goto labelA;
         }
         int digit = 0, upper = 0, spl = 0, lower = 0;
         for (auto i : password) {
-            if (isupper(i))  upper++;
-            if (islower(i))  lower++;
-            if (isdigit(i))  digit++;
-            if (i == '$' || i == '&' || i == '@' || i == '%' || i == '*')  spl++;
+            if (isupper(i)) upper++;
+            if (islower(i)) lower++;
+            if (isdigit(i)) digit++;
+            if (i == '$' || i == '&' || i == '@' || i == '%' || i == '*') spl++;
         }
         if (upper == 0 || lower == 0 || digit == 0 || spl == 0) {
             cout << "Password should include one upper case, one lower case, one digit, one special character" << endl;
@@ -316,12 +321,11 @@ void registerUser() {
                 password[i] = password[i] - 'a' + 2;
         }
         User_name.push_back(username);
-        // Password.push_back(password);
         Email.push_back(email);
         users[email] = password;
         prev_pass[email].push_back(password);
-        flag = 0; 
-        cout<<"User registered.Now You can Login"<<endl;
+        flag = 0;
+        cout << "User registered. Now You can Login" << endl;
         sign_in();
     }
 }
