@@ -26,7 +26,6 @@ map<string,string> dept_date;
 map<string,int> seat;
 map<string,string> status;
 
-
 //under construction
 // void add(){
 //     cout<<"Enter the flight name:";
